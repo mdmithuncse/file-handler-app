@@ -3,7 +3,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Snappymob.FileHandler.Service.ContentServices;
-using Snappymob.FileHandler.Service.DirectoryServices;
 
 namespace Snappymob.FileHandler.FileProcessor
 {
@@ -19,7 +18,21 @@ namespace Snappymob.FileHandler.FileProcessor
                     services.AddHostedService<FileProcessManager>();
                 });
 
-            await builder.RunConsoleAsync();
+            using var host = builder.Build();
+            var fileProcessManager = host.Services.GetRequiredService<IHostedService>() as FileProcessManager;
+
+            if (fileProcessManager != null)
+            {
+                var cts = new CancellationTokenSource();
+
+                await fileProcessManager.StartAsync(cts.Token);
+                Console.WriteLine("StartAsync completed.");
+
+                await fileProcessManager.StopAsync(cts.Token);
+                Console.WriteLine("StopAsync completed.");
+            }
+
+            Environment.Exit(0);
         }
     }
 }

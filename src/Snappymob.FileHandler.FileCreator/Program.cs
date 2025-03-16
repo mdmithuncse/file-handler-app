@@ -21,7 +21,21 @@ namespace Snappymob.FileHandler.FileCreator
                     services.AddHostedService<FileCreateManager>();
                 });
 
-            await builder.RunConsoleAsync();
+            using var host = builder.Build();
+            var fileCreateManager = host.Services.GetRequiredService<IHostedService>() as FileCreateManager;
+
+            if (fileCreateManager != null)
+            {
+                var cts = new CancellationTokenSource();
+
+                await fileCreateManager.StartAsync(cts.Token);
+                Console.WriteLine("StartAsync completed.");
+
+                await fileCreateManager.StopAsync(cts.Token);
+                Console.WriteLine("StopAsync completed.");
+            }
+
+            Environment.Exit(0);
         }
     }
 }
