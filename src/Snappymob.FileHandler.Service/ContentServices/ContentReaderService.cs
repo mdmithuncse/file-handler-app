@@ -1,6 +1,4 @@
-﻿using Snappymob.FileHandler.Common.Constants;
-
-namespace Snappymob.FileHandler.Service.ContentServices
+﻿namespace Snappymob.FileHandler.Service.ContentServices
 {
     public class ContentReaderService : IContentReaderService
     {
