@@ -4,8 +4,8 @@
     {
         public static class FileNames
         {
-            public const string InputFileName = "InputFile";
-            public const string OutputFileName = "OutputFile";
+            public const string InputFileName = "input_file";
+            public const string OutputFileName = "output_file";
         }
 
         public static class Extensions
@@ -15,7 +15,7 @@
 
         public static class Size
         {
-            public const int MaxSize = 10 * 1024 * 1024; // 10MB
+            public const int MaxFileSize = 10 * 1024 * 1024; // 10MB
         }
     }
 }

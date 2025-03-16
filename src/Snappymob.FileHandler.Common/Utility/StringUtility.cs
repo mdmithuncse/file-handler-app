@@ -1,10 +1,10 @@
 ﻿namespace Snappymob.FileHandler.Common.Utility
 {
-    public static class StringUtility
+    internal static class StringUtility
     {
-        private static readonly Random random = new Random();
+        private static readonly Random random = new();
 
-        public static string GenerateAlphabeticalString(int length)
+        internal static string GenerateAlphabeticalString(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
@@ -12,7 +12,7 @@
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        public static string GenerateAlphanumericStringWithSpaces(int length)
+        internal static string GenerateAlphanumericStringWithSpaces(int length)
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             const int maxSpaces = 10;

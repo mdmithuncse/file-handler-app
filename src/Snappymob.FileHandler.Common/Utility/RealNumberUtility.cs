@@ -1,10 +1,10 @@
 ﻿namespace Snappymob.FileHandler.Common.Utility
 {
-    public static class RealNumberUtility
+    internal static class RealNumberUtility
     {
-        private static readonly Random random = new Random();
+        private static readonly Random random = new();
 
-        public static double GenerateRandomRealNumber(double min, double max)
+        internal static double GenerateRandomRealNumber(double min, double max)
         {
             return random.NextDouble() * (max - min) + min;
         }

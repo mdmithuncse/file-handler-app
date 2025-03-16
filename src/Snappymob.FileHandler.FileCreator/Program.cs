@@ -2,7 +2,8 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Snappymob.FileHandler.Service.RandomObject;
+using Snappymob.FileHandler.Service.ContentServices;
+using Snappymob.FileHandler.Service.DirectoryServices;
 
 namespace Snappymob.FileHandler.FileCreator
 {
@@ -13,7 +14,10 @@ namespace Snappymob.FileHandler.FileCreator
             var builder = new HostBuilder()
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddTransient<IRandomObjectService, RandomObjectService>();
+                    services.AddTransient<ICheckDirectoryService, CheckDirectoryService>();
+                    services.AddTransient<ICreateDirectoryService, CreateDirectoryService>();
+                    services.AddTransient<IContentCreatorService, ContentCreatorService>();
+                    services.AddTransient<IContentWriterService, ContentWriterService>();
                     services.AddHostedService<FileCreateManager>();
                 });
 

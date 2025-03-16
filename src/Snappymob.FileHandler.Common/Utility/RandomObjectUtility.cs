@@ -1,13 +1,12 @@
 ﻿using Snappymob.FileHandler.Common.Constants;
-using Snappymob.FileHandler.Common.Utility;
 
-namespace Snappymob.FileHandler.Service.RandomObject
+namespace Snappymob.FileHandler.Common.Utility
 {
-    public class RandomObjectService : IRandomObjectService
+    public static class RandomObjectUtility
     {
         private static readonly Random random = new();
 
-        public string GenerateRandomObject()
+        public static string GenerateRandomObject()
         {
             int objectTypes = random.Next(ObjectConstants.Types.NumberOfObjectTypes);
 
